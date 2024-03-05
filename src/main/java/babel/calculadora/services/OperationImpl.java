@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OperationImpl implements IOperation {
+
+    // No estaría de más añadir un constructor vacío para que Spring pueda instanciar este bean de manera correcta
+
     @Override
     public void addition(Double a, double b) {
         double result = a + b;

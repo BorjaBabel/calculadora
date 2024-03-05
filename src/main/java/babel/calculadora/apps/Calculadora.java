@@ -16,6 +16,8 @@ public class Calculadora {
     }
     public void startAndOperate(){
 
+        // Lo mismo que hemos hablado en la corrección, mejor añadir una condición de salida en vez de un bucle infinito
+        // por los riesgos que conlleva
         while(true) {
             showOptions();
             int opcion = readInt();
@@ -23,6 +25,8 @@ public class Calculadora {
                 System.exit(0);
             }
             System.out.println("Introduzca el primer número:");
+            // Cuidado!! Estás asignando el valor de retorno de readDouble a una variable de tipo Double (No primitivo), pero el método
+            // readDouble devuelve un primitivo double, por lo que deberías cambiar el tipo de la variable a double
             Double a = readDouble();
             Number number1 = new Number(a);
 
@@ -50,6 +54,9 @@ public class Calculadora {
         return scanner.nextDouble();
     }
 
+    // La lógica de la calculadora debería llevarse un servicio para no mezclar responsabilidades. Por un lado tenemos
+    // la lógica de la calculadora y por otro lado la lógica de la entrada/salida de datos. En este caso, la lógica entrada
+    // y salida de datos está bien en este bean, pero la lógica de la calculadora debería estar en un servicio
     public void calculate(int opcion, Number number1, Number number2){
         switch (opcion) {
             case 1:
